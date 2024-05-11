@@ -86,20 +86,20 @@ int main()
 
     //--------------------------- tests avec std::list ------------------------------------- //
     
-    std::cout << PURPLE "///// " RESET "LIST CONTAINER " PURPLE "/////" RESET << std::endl;
+    std::cout << PURPLE "/// " RESET "MutantStack c List " PURPLE "///" RESET << std::endl;
     std::cout << PURPLE "//////////////////////////" RESET << std::endl;
-    std::list<int> lst;
-    lst.push_back(5);
-    lst.push_back(17);
-    std::cout << DIM "back of the list : " RESET << lst.back() << std::endl;
-    lst.pop_back();
+    MutantStack<int, std::list<int> > lst;
+    lst.push(5);
+    lst.push(17);
+    std::cout << DIM "back of the list : " RESET << lst.top() << std::endl;
+    lst.pop();
     std::cout << DIM "size of the list : " RESET << lst.size() << std::endl;
-    lst.push_back(3);
-    lst.push_back(5);
-    lst.push_back(737);
-    lst.push_back(0);
-    std::list<int>::iterator it_f = lst.begin();
-    std::list<int>::iterator it_b = lst.end();
+    lst.push(3);
+    lst.push(5);
+    lst.push(737);
+    lst.push(0);
+    MutantStack<int, std::list<int> >::iterator it_f = lst.begin();
+    MutantStack<int, std::list<int> >::iterator it_b = lst.end();
     std::cout << PURPLE "list :" RESET << std::endl;
     while (it_f != it_b)
     {
@@ -108,11 +108,41 @@ int main()
     }
     // testing copy constructor
     std::cout << DIM ITALIC "- Using copy constructor -" RESET << std::endl;
-    std::list<int> cpy(lst);
+    MutantStack<int, std::list<int> > cpy(lst);
     std::cout << PURPLE "copied list :" RESET  << std::endl;
     while (!cpy.empty()) {
-        std::cout << cpy.back() << std::endl;
-        cpy.pop_back();
+        std::cout << cpy.top() << std::endl;
+        cpy.pop();
+    }
+    std::cout << PURPLE "//////////////////////////" RESET << std::endl;
+
+    std::cout << PURPLE "///// " RESET "LIST CONTAINER " PURPLE "/////" RESET << std::endl;
+    std::cout << PURPLE "//////////////////////////" RESET << std::endl;
+    std::list<int> lst2;
+    lst2.push_back(5);
+    lst2.push_back(17);
+    std::cout << DIM "back of the list : " RESET << lst2.back() << std::endl;
+    lst2.pop_back();
+    std::cout << DIM "size of the list : " RESET << lst2.size() << std::endl;
+    lst2.push_back(3);
+    lst2.push_back(5);
+    lst2.push_back(737);
+    lst2.push_back(0);
+    std::list<int>::iterator it_fr = lst2.begin();
+    std::list<int>::iterator it_ba = lst2.end();
+    std::cout << PURPLE "list :" RESET << std::endl;
+    while (it_fr != it_ba)
+    {
+        std::cout << *it_fr << std::endl;
+        ++it_fr;
+    }
+    // testing copy constructor
+    std::cout << DIM ITALIC "- Using copy constructor -" RESET << std::endl;
+    std::list<int> cpy2(lst2);
+    std::cout << PURPLE "copied list :" RESET  << std::endl;
+    while (!cpy2.empty()) {
+        std::cout << cpy2.back() << std::endl;
+        cpy2.pop_back();
     }
     std::cout << PURPLE "//////////////////////////" RESET << std::endl;
 
