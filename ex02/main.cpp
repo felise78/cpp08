@@ -25,22 +25,17 @@ int main()
 
     MutantStack<int> mstack;
 
+    // testing all the member functions of std::stack
     std::cout << DIM "Is stack empty ? " RESET << (mstack.empty() ? "Yes" : "No") << std::endl;
-    
     std::cout << DIM ITALIC "- Push '5' to stack ------" RESET << std::endl;
     mstack.push(5);
     std::cout << DIM ITALIC "- Push '17' to stack -----" RESET << std::endl;
     mstack.push(17);
-    
     std::cout << DIM "top of the stack : " RESET << mstack.top() << std::endl;
-    
     std::cout << DIM ITALIC "- Using pop() on mstack --" RESET << std::endl;
     mstack.pop();
-    
     std::cout << DIM "size of the stack : " RESET << mstack.size() << std::endl;
-    
     std::cout << DIM "Is stack empty ? " RESET << (mstack.empty() ? "Yes" : "No") << std::endl;
-    
     std::cout << DIM ITALIC "- Push '3' to stack ------" RESET << std::endl;
     mstack.push(3);
     std::cout << DIM ITALIC "- Push '5' to stack ------" RESET << std::endl;
@@ -49,7 +44,8 @@ int main()
     mstack.push(737);
     std::cout << DIM ITALIC "- Push '0' to stack ------" RESET << std::endl;
     mstack.push(0);
-    
+
+    // printing the stack
     MutantStack<int>::iterator it = mstack.begin();
     MutantStack<int>::iterator ite = mstack.end();
     std::cout << DIM ITALIC "- Using iterators to print" RESET << std::endl;
@@ -59,6 +55,7 @@ int main()
         std::cout << *it << std::endl;
         ++it;
     }
+
     // testing copy constructor
     std::cout << DIM ITALIC "- Using copy constructor -" RESET << std::endl;
     std::stack<int> s(mstack);
@@ -67,9 +64,12 @@ int main()
         std::cout << s.top() << std::endl;
         s.pop();
     }
+
     // maintenant je peux utiliser des algorithmes qui prennent des iterators
-    std::cout << DIM ITALIC "- Now I can use algorithms -" RESET << std::endl;
-    
+    std::cout << DIM ITALIC "-~-~-~-~-~-~-~-~-~-~-~-~-~" RESET << std::endl;
+    std::cout << DIM ITALIC "- Now I can use algorithms" RESET << std::endl;
+    std::cout << DIM ITALIC "that use iterators -~-~-~-" RESET << std::endl;
+    std::cout << DIM ITALIC "-~-~-~-~-~-~-~-~-~-~-~-~-~" RESET << std::endl;
     MutantStack<int> output;
     for(size_t i = 0; i < mstack.size(); ++i)
         output.push(0);
@@ -82,13 +82,18 @@ int main()
         std::cout << *it2 << std::endl;
         ++it2;
     }
-    std::cout << PURPLE "//////////////////////////" RESET << std::endl;
+    std::cout << DIM ITALIC "-~-~-~-~-~-~-~-~-~-~-~-~-~\n" RESET << std::endl;
 
-    //--------------------------- tests avec std::list ------------------------------------- //
-    
-    std::cout << PURPLE "/// " RESET "MutantStack c List " PURPLE "///" RESET << std::endl;
+    // ------------------------------------------------------------------------------------- //
+    // --------------------------- MutantStack using std::list ----------------------------- //
+    // ------------------------------------------------------------------------------------- //
+
     std::cout << PURPLE "//////////////////////////" RESET << std::endl;
+    std::cout << PURPLE "/ " RESET "MutantStack with List " PURPLE "//" RESET << std::endl;
+    std::cout << PURPLE "//////////////////////////" RESET << std::endl;
+    
     MutantStack<int, std::list<int> > lst;
+
     lst.push(5);
     lst.push(17);
     std::cout << DIM "back of the list : " RESET << lst.top() << std::endl;
@@ -98,6 +103,7 @@ int main()
     lst.push(5);
     lst.push(737);
     lst.push(0);
+    // printing MutantList : 
     MutantStack<int, std::list<int> >::iterator it_f = lst.begin();
     MutantStack<int, std::list<int> >::iterator it_b = lst.end();
     std::cout << PURPLE "list :" RESET << std::endl;
@@ -106,6 +112,7 @@ int main()
         std::cout << *it_f << std::endl;
         ++it_f;
     }
+
     // testing copy constructor
     std::cout << DIM ITALIC "- Using copy constructor -" RESET << std::endl;
     MutantStack<int, std::list<int> > cpy(lst);
@@ -114,11 +121,17 @@ int main()
         std::cout << cpy.top() << std::endl;
         cpy.pop();
     }
-    std::cout << PURPLE "//////////////////////////" RESET << std::endl;
+    
+    // ------------------------------------------------------------------------------------- //
+    // ---------------------------------- LIST CONTAINER  ---------------------------------- //
+    // ------------------------------------------------------------------------------------- //
 
+    std::cout << PURPLE "\n//////////////////////////" RESET << std::endl;
     std::cout << PURPLE "///// " RESET "LIST CONTAINER " PURPLE "/////" RESET << std::endl;
     std::cout << PURPLE "//////////////////////////" RESET << std::endl;
+    
     std::list<int> lst2;
+    
     lst2.push_back(5);
     lst2.push_back(17);
     std::cout << DIM "back of the list : " RESET << lst2.back() << std::endl;
@@ -128,6 +141,8 @@ int main()
     lst2.push_back(5);
     lst2.push_back(737);
     lst2.push_back(0);
+    
+    // printing the list
     std::list<int>::iterator it_fr = lst2.begin();
     std::list<int>::iterator it_ba = lst2.end();
     std::cout << PURPLE "list :" RESET << std::endl;
@@ -136,6 +151,7 @@ int main()
         std::cout << *it_fr << std::endl;
         ++it_fr;
     }
+
     // testing copy constructor
     std::cout << DIM ITALIC "- Using copy constructor -" RESET << std::endl;
     std::list<int> cpy2(lst2);
@@ -144,7 +160,6 @@ int main()
         std::cout << cpy2.back() << std::endl;
         cpy2.pop_back();
     }
-    std::cout << PURPLE "//////////////////////////" RESET << std::endl;
 
     return 0;
 }
